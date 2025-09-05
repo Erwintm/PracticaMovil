@@ -15,6 +15,7 @@
  */
 package com.example.tiptime
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -84,12 +85,13 @@ fun TipTimeLayout() {
     }
 }
 
+@SuppressLint("UnrememberedMutableState")
 @Composable
 fun EditNumberField(modifier: Modifier = Modifier) {
-    var amountInput: MutableState<String> = mutableStateOf("0")
+    var amountInput = mutableStateOf("0")
     TextField(
         value = amountInput.value,
-        onValueChange = {},
+        onValueChange = {amountInput.value = it },
         modifier = modifier
     )
 }
