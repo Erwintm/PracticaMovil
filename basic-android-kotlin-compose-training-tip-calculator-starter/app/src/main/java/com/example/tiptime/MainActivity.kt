@@ -21,7 +21,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.activity.enableEdgeToEdge
-
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.foundation.layout.Arrangement
@@ -86,13 +88,13 @@ fun TipTimeLayout() {
     }
 }
 
-@SuppressLint("UnrememberedMutableState")
+
 @Composable
 fun EditNumberField(modifier: Modifier = Modifier) {
     var amountInput by remember { mutableStateOf("") }
     TextField(
-        value = amountInput.value,
-        onValueChange = {amountInput.value = it },
+        value = amountInput,
+        onValueChange = { amountInput= it },
         modifier = modifier
     )
 }
